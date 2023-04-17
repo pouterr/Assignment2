@@ -14,6 +14,17 @@ public class MyLinkedList<T> implements MyList<T> {
     private Node head;
     private Node tail;
     private int size;
+    @Override
+    public void add(T element) {
+        Node newNode = new Node(element, null, tail);
+        if (size == 0) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+        }
+        tail = newNode;
+        size++;
+    }
 
     @Override
     public int size() {
@@ -23,11 +34,6 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public boolean contains(Object o) {
         return false;
-    }
-
-    @Override
-    public void add(T item) {
-
     }
 
     @Override
