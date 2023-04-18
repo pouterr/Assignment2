@@ -1,6 +1,8 @@
 public class MyArrayList<T> implements MyList<T>{
     private Object[] array;
-    int size;
+    private int size = 0;
+    private int capacity = 5;
+    public MyArrayList(){array = new Object[capacity];};
     @Override
     public int size() {
         return 0;
@@ -13,7 +15,15 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void add(T item) {
-
+        if(size == capacity){
+            capacity = (int) (2*capacity);
+            Object[] array2 = new Object[capacity];
+            for(int i=0;i<size;i++){
+                array2[i] = array[i];
+            }
+            array = array2;
+        }
+        array[size++] = item;
     }
 
     @Override
