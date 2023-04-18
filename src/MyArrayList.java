@@ -1,5 +1,6 @@
 public class MyArrayList<T> implements MyList<T>{
     private Object[] array;
+    int size;
     @Override
     public int size() {
         return 0;
