@@ -118,7 +118,16 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void clear() {
-
+        Node current = head;
+        while (current != null) {
+            Node next = current.next;
+            current.next = null;
+            current.prev = null;
+            current = next;
+        }
+        head = null;
+        tail = null;
+        size = 0;
     }
 
     @Override
