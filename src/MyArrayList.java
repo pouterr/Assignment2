@@ -1,11 +1,14 @@
 public class MyArrayList<T> implements MyList<T>{
-    private Object[] array;
-    private int size = 0;
-    private int capacity = 5;
-    public MyArrayList(){array = new Object[capacity];};
+    private T[] arr;
+    private int size;
+
+    public MyArrayList(){
+        this.arr= (T[]) new Object[5];
+        this.size = 0;};
+
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -15,15 +18,18 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void add(T element) {
-        if(size == capacity){
-            capacity = (int) (2*capacity);
-            Object[] array2 = new Object[capacity];
-            for(int i=0;i<size;i++){
-                array2[i] = array[i];
-            }
-            array = array2;
+        if(size == arr.length){
+            increaseBuffer();
         }
-        array[size++] = element;
+        arr[size++] = element;
+    }
+
+    public void increaseBuffer(){
+        T[] newArr = (T[]) new Object[arr.length*2];
+        for(int i=0; i< arr.length; i++){
+            newArr[i]=arr[i];
+        }
+        arr = newArr;
     }
 
     @Override
@@ -48,7 +54,8 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public T get(int index) {
-        return null;
+        checkIndex(index);
+        return arr[index];
     }
 
     @Override
@@ -64,5 +71,11 @@ public class MyArrayList<T> implements MyList<T>{
     @Override
     public void sort() {
 
+    }
+
+    public void checkIndex(int index){
+        if(index < 0 || index>=size){
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
