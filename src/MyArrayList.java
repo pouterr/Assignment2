@@ -92,7 +92,19 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void sort() {
+        if (!(arr[0] instanceof Integer)) {
+            throw new UnsupportedOperationException("List is not integer. You can't sort it");
+        }
 
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
+                if ((Integer)arr[j] > (Integer)arr[j + 1]) {
+                    T temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
     }
 
     public void checkIndex(int index){
