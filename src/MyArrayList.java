@@ -8,7 +8,7 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public int size() {
-        return size;
+        return size;//
     }
 
     @Override
