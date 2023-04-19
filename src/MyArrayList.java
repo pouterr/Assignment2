@@ -49,6 +49,7 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void remove(int index) {
+        checkIndex(index);
         for (int i = index; i < size - 1; i++) {
             arr[i] = arr[i + 1];
         }
@@ -70,7 +71,12 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i < size - 1; i++) {
+            if(arr[i].equals(o)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
