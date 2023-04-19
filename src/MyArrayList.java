@@ -39,7 +39,27 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void add(T item, int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
 
+        if (size == arr.length) {
+            // Resize the array if it is full
+            T[] newArr = (T[]) new Object[size * 2];
+            for (int i = 0; i < size; i++) {
+                newArr[i] = arr[i];
+            }
+            arr = newArr;
+        }
+
+        // Shift elements to the right
+        for (int i = size - 1; i >= index; i--) {
+            arr[i + 1] = arr[i];
+        }
+
+        // Insert the new element
+        arr[index] = item;
+        size++;
     }
 
     @Override
