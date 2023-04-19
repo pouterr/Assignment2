@@ -33,6 +33,13 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public boolean contains(Object o) {
+        Node current = head;
+        while (current != null) {
+            if (current.element.equals(o)) {
+                return true;
+            }
+            current = current.next;
+        }
         return false;
     }
 
@@ -43,7 +50,30 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public boolean remove(T item) {
-        return false;
+        Node current = head;
+        while (current != null) {
+            if (current.element.equals(item)) {
+                // Found the element, remove it
+                if (current.prev == null) {
+                    // Element is at head
+                    head = current.next;
+                } else {
+                    current.prev.next = current.next;
+                }
+                if (current.next == null) {
+                    // Element is at tail
+                    tail = current.prev;
+                } else {
+                    current.next.prev = current.prev;
+                }
+                current.prev = null;
+                current.next = null;
+                size--;
+                return true;
+            }
+            current = current.next;
+        }
+        return false; // Element not found
     }
 
     @Override
