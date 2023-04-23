@@ -72,3 +72,7 @@ boolean contains(Object o)`: Returns true if this list contains the specified el
 **Private Methods**
 
 `void increaseBuffer()`: Doubles the size of the array.
+
+# Usage
+
+You can test methods by starting `Test.java` file
