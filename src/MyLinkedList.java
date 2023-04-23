@@ -173,7 +173,7 @@ public class MyLinkedList<T> implements MyList<T> {
             size--;
         }
     /**
-     * Removes all of the elements from this list.
+     * Removes all the elements from this list.
      */
         @Override
         public void clear() {
@@ -252,6 +252,24 @@ public class MyLinkedList<T> implements MyList<T> {
 
         @Override
         public void sort() {
-
+//            if (size < 2){
+//                return;
+//            }
+//            Node<T> curr = head;
+//            Node<T> index;
+//            T temp;
+//
+//            while (curr != null){
+//                index = curr.next;
+//                while (index != null){
+//                    if (((Comparable<T>)curr.data).compareTo(index.data) > 0){
+//                        temp = curr.data;
+//                        curr.data = index.data;
+//                        index.data = temp;
+//                    }
+//                    index = index.next;
+//                }
+//                curr = curr.next;
+//            }
         }
     }

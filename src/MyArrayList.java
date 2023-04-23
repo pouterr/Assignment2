@@ -186,7 +186,7 @@ public class MyArrayList<T> implements MyList<T>{
     @Override
     public int lastIndexOf(Object o) {
         int lastindex = -1;
-        for(int i = 0; i<size-1;i++){
+        for(int i = 0; i<size;i++){
             if(arr[i].equals(o)){
                 lastindex = i;
             }
