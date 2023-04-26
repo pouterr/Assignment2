@@ -232,4 +232,12 @@ public class MyArrayList<T> implements MyList<T>{
         }
     }
 
+    public void addAll(T[] arr, int index){
+        if(index<0 || index >= size){
+            throw new IndexOutOfBoundsException("Invalid index. Try again please");
+        }
+        for(T item:arr){
+            add(item,index);
+        }
+    }
 }
